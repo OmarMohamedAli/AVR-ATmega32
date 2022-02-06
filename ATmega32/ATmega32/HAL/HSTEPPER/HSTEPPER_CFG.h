@@ -1,0 +1,13 @@
+
+
+#ifndef HSTEPPER_CFG_H_
+#define HSTEPPER_CFG_H_
+
+#define STEPPER_MOTOR_PIN_1   PB0
+#define STEPPER_MOTOR_PIN_2   PB1
+#define STEPPER_MOTOR_PIN_3   PB2
+#define STEPPER_MOTOR_PIN_4   PB3
+
+#define STEPS_PER_REVOLUTION  200
+
+#endif /* HSTEPPER_CFG_H_ */

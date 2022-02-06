@@ -1,0 +1,39 @@
+/********************************************************************************
+ * File        : Main.c
+ * Description : PIR Sensor for Motion Detection.
+ * Author      : Eng: Omar Mohamed Ali 
+ * Date        : 4/2/2022
+ * Version     : 1.0.0
+ *********************************************************************************/
+/*********************************************************************************
+                           << File Inclusions >>
+**********************************************************************************/
+
+#include "HLED_INTERFACE.h"
+#include "HPIR_SENSOR_INTERFACE.h"
+#define F_CPU 16000000UL
+#include <util/delay.h>
+
+
+int main(void)
+{
+	u8 reading = 0;
+	HPIR_SENSOR_VidInit();
+	HLED_ERROR_STATE_t_LedInit(B_LED);
+	
+	while(1)
+	{	
+		HPIR_SENSOR_ERROR_STATE_t_Read(&reading);
+		if(1 == reading)
+		{
+			HLED_ERROR_STATE_t_LedON(B_LED);
+		}
+		else
+		{
+			HLED_ERROR_STATE_t_LedOFF(B_LED);
+		}
+	}
+}
+
+
+

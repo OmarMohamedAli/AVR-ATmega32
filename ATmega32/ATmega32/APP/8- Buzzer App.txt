@@ -1,0 +1,23 @@
+
+  File         Main.c
+  Description  Relay APP.
+  Author       Eng Omar Mohamed Ali 
+  Date         522022
+  Version      1.0.0
+ 
+
+                            File Inclusions 
+
+#define  F_CPU 16000000UL
+#include utildelay.h
+#include HBUZZER_INTERFACE.h
+
+int main(void)
+{
+	HBUZZER_VidINIT();
+	while (1)
+	{
+		HBUZZER_VidTOGGLE();
+		_delay_ms(500);
+	}
+}

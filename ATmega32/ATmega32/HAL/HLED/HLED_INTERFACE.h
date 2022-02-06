@@ -1,0 +1,15 @@
+
+#ifndef HLED_INTERFACE_H_
+#define HLED_INTERFACE_H_
+
+#include "STD_TYPES.h"
+#include "HLED_CONF.h"
+#include "HLED_PRIVATE.h"
+#include "MDIO_INTERFACE.h"
+
+ERROR_STATE_t HLED_ERROR_STATE_t_LedInit(u8 COPY_u8Led);
+ERROR_STATE_t HLED_ERROR_STATE_t_LedON(u8 COPY_u8Led);
+ERROR_STATE_t HLED_ERROR_STATE_t_LedOFF(u8 COPY_u8Led);
+ERROR_STATE_t HLED_ERROR_STATE_t_ToggleLed(u8 COPY_u8Led);
+
+#endif /* HLED_INTERFACE_H_ */

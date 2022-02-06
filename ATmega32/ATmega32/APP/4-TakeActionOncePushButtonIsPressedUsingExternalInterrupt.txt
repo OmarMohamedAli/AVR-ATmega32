@@ -1,0 +1,115 @@
+/********************************************************************************
+ * File        : Main.c
+ * Description : Take Action Once Push Button is Pressed using External Interrupt.
+ * Author      : Eng: Omar Mohamed Ali 
+ * Date        : 31/1/2022
+ * Version     : 1.0.0
+ *********************************************************************************/
+/*********************************************************************************
+                          << Using Toggle Function >>
+**********************************************************************************/
+
+#include "HLED_INTERFACE.h"
+#include "M_EXT_INT_INTERFACE.h"
+#define F_CPU 16000000UL
+#include <util/delay.h>
+#include <avr/interrupt.h>
+
+int main(void)
+{
+	MEXT_INT_VidExternalInterrupt_0_Init();
+	MEXT_INT_Vid_SET_ExternalInterrupt_0_Mode(FALLING_EDGE);
+	MEXT_INT_VidEnableExternalInterrupt_0();
+	HLED_ERROR_STATE_t_LedInit(B_LED);
+	HLED_ERROR_STATE_t_LedInit(R_LED);
+	 
+	while(1)
+	{	
+	}
+}
+
+ISR(INT0_vect)
+{
+	HLED_ERROR_STATE_t_ToggleLed(B_LED);
+}
+
+
+/*********************************************************************************
+                          << Using flag >>
+**********************************************************************************/
+/*
+#include "HLED_INTERFACE.h"
+#include "M_EXT_INT_INTERFACE.h"
+#define F_CPU 16000000UL
+#include <util/delay.h>
+#include <avr/interrupt.h>
+u8 flag;
+
+int main(void)
+{
+	MEXT_INT_VidExternalInterrupt_0_Init();
+	MEXT_INT_Vid_SET_ExternalInterrupt_0_Mode(FALLING_EDGE);
+	MEXT_INT_VidEnableExternalInterrupt_0();
+	HLED_ERROR_STATE_t_LedInit(B_LED);
+	HLED_ERROR_STATE_t_LedInit(R_LED);
+	
+	while(1)
+	{	
+		if(1 == flag)
+		{
+			HLED_ERROR_STATE_t_LedON(B_LED);
+		}
+		else
+		{
+			HLED_ERROR_STATE_t_LedOFF(B_LED);
+		}
+	}
+}
+
+ISR(INT0_vect)
+{
+	TOGGLE_BIT(flag , 0);
+}
+*/
+
+/*********************************************************************************
+                          << Using Counter flag >>
+**********************************************************************************/
+/*
+#include "HLED_INTERFACE.h"
+#include "M_EXT_INT_INTERFACE.h"
+#define F_CPU 16000000UL
+#include <util/delay.h>
+#include <avr/interrupt.h>
+u8 Counter_flag;
+
+int main(void)
+{
+	MEXT_INT_VidExternalInterrupt_0_Init();
+	MEXT_INT_Vid_SET_ExternalInterrupt_0_Mode(FALLING_EDGE);
+	MEXT_INT_VidEnableExternalInterrupt_0();
+	HLED_ERROR_STATE_t_LedInit(B_LED);
+	HLED_ERROR_STATE_t_LedInit(R_LED);
+	
+	while(1)
+	{	
+		if(1 == Counter_flag)
+		{
+			HLED_ERROR_STATE_t_LedON(B_LED);
+		}
+		else
+		{
+			HLED_ERROR_STATE_t_LedOFF(B_LED);
+		}
+	}
+}
+
+ISR(INT0_vect)
+{
+	Counter_flag++;
+	if(Counter_flag == 2)
+	{
+		Counter_flag = 0;
+	}
+}
+*/

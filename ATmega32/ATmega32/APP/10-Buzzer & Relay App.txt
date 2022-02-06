@@ -1,0 +1,33 @@
+/********************************************************************************
+ * File        : Main.c
+ * Description : Buzzer & Relay APP.
+ * Author      : Eng: Omar Mohamed Ali 
+ * Date        : 5/2/2022
+ * Version     : 1.0.0
+ *********************************************************************************/
+/*********************************************************************************
+                           << File Inclusions >>
+**********************************************************************************/
+#define  F_CPU 16000000UL
+#include <util/delay.h>
+#include "HBUZZER_INTERFACE.h"
+#include "HRELAY_INTERFACE.h"
+
+int main(void)
+{
+	HBUZZER_VidINIT();
+	HRELAY_VidInit(RELAY2);
+	while(1)
+	{	
+		HRELAY_VidOFF(RELAY2);
+		HBUZZER_VidON();
+		_delay_ms(500);
+		HBUZZER_VidOFF();
+		HRELAY_VidON(RELAY2);
+		_delay_ms(500);
+		
+	}
+}
+
+
+
